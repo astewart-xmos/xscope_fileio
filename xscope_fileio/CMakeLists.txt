@@ -19,3 +19,8 @@ target_compile_options( ${LIB_NAME}
       -g -Os 
       -fxscope
 )
+
+install(
+  FILES "__init__.py"
+  DESTINATION ${WORKSPACE_PATH}/xscope_fileio
+)

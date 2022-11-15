@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 
+set(INSTALL_TO ${CMAKE_BINARY_DIR}/../xscope_fileio)
+
 # Compile for x86_64 on Mac as we can't support the M1 ARM architecture yet
 set(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE INTERNAL "")
 
@@ -16,3 +18,6 @@ find_library(XSCOPE_ENDPOINT_LIB NAMES xscope_endpoint.so xscope_endpoint.lib
                                  PATHS $ENV{XMOS_TOOL_PATH}/lib)
 
 target_link_libraries(xscope_host_endpoint PRIVATE ${XSCOPE_ENDPOINT_LIB})
+
+install(TARGETS xscope_host_endpoint 
+        DESTINATION ${INSTALL_TO} )
